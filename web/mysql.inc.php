@@ -1,10 +1,9 @@
-﻿<?php
+<?php
 //資料庫設定
-$dbServer = "localhost";
-$dbUser = "root";
-$dbPass = "";
-$dbName = "pet";
-
+$dbServer = getenv('CLEARDB_DATABASE_HOST');
+$dbUser = getenv('CLEARDB_DATABASE_USER');
+$dbPass = getenv('CLEARDB_DATABASE_PASSWORD');
+$dbName = getenv('CLEARDB_DATABASE_DB');git add .
 //連線資料庫伺服器
 $conn = @mysqli_connect($dbServer, $dbUser, $dbPass, $dbName);
 
