@@ -5,7 +5,7 @@ include("mysql.inc.php");
 $myTable='comment';
 
 //查詢所有欄位, 並且依照編號遞減排序, 讓最新留言顯示在最前面
-$result=mysqli_query($conn, "SELECT * FROM $myTable ORDER BY number DESC");
+$result=mysqli_query($conn, "SELECT * FROM $myTable");
 
 //取得留言的總筆數
 $numRows = mysqli_num_rows($result);
@@ -86,13 +86,13 @@ $numRows = mysqli_num_rows($result);
 			<br><br><br><h3>留言板</h3><br><hr>
 <?php
 //如果留言筆數大於 0, 便顯示留言的內容
-if (mysqli_num_rows($result) >0){
-	while ($row = mysqli_fetch_array($result)) {
+if ($numRows >0){
+	while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
 		echo "<br><br><div style='font-size:24px;font-weight:bold;'>名字：{$row['name']}</div><br>
 			<div id=r1>留言：{$row['content']}<br><br>
 			&emsp;&emsp;
 			<br><hr></div>";
-	}
+    }
 }else{
 	echo "<hr><br><br><div id=r1>尚未有留言。</div><br>";
 }
